@@ -16,7 +16,7 @@ class ApiService {
       'anthropic-version': '2023-06-01',
       'anthropic-beta': 'mcp-client-2025-04-04',
     };
-    
+
     // Add logging interceptor for debugging
     _dio.interceptors.add(LogInterceptor(
       requestBody: true,
@@ -42,7 +42,8 @@ class ApiService {
       debugPrint('Message: ${e.message}');
       debugPrint('Response: ${e.response?.data}');
       debugPrint('Status code: ${e.response?.statusCode}');
-      throw Exception('Failed to send message: ${e.message}\nResponse: ${e.response?.data}');
+      throw Exception(
+          'Failed to send message: ${e.message}\nResponse: ${e.response?.data}');
     } catch (e) {
       debugPrint('Unexpected error: $e');
       throw Exception('Failed to send message: $e');
@@ -78,7 +79,8 @@ class ApiService {
       debugPrint('Message: ${e.message}');
       debugPrint('Response: ${e.response?.data}');
       debugPrint('Status code: ${e.response?.statusCode}');
-      throw Exception('Failed to send message: ${e.message}\nResponse: ${e.response?.data}');
+      throw Exception(
+          'Failed to send message: ${e.message}\nResponse: ${e.response?.data}');
     } catch (e) {
       debugPrint('Unexpected error: $e');
       throw Exception('Failed to send message: $e');
@@ -116,7 +118,8 @@ class ApiService {
       debugPrint('Message: ${e.message}');
       debugPrint('Response: ${e.response?.data}');
       debugPrint('Status code: ${e.response?.statusCode}');
-      throw Exception('Failed to fetch messages: ${e.message}\nResponse: ${e.response?.data}');
+      throw Exception(
+          'Failed to fetch messages: ${e.message}\nResponse: ${e.response?.data}');
     } catch (e) {
       debugPrint('Unexpected error: $e');
       throw Exception('Failed to fetch messages: $e');

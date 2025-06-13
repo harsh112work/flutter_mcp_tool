@@ -1,6 +1,5 @@
 import 'package:equatable/equatable.dart';
 
-import '../../screens/content_generator_screen.dart';
 import '../../models/chat_message.dart';
 
 class ChatMessageModel {
@@ -44,4 +43,4 @@ class ChatState extends Equatable {
 
   @override
   List<Object?> get props => [messages, isLoading, error];
-} 
+}

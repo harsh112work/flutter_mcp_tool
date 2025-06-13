@@ -1,8 +1,8 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mockito/mockito.dart';
+import 'package:mcp_tool_app/models/chat_message.dart';
 import 'package:mcp_tool_app/repositories/chat_repository.dart';
 import 'package:mcp_tool_app/services/api_service.dart';
-import 'package:mcp_tool_app/models/chat_message.dart';
+import 'package:mockito/mockito.dart';
 
 class MockApiService extends Mock implements ApiService {}
 
@@ -31,12 +31,14 @@ void main() {
       };
 
       // Setup mock behavior
-      when(mockApiService.sendMessageToComponent('test message', 'test-component'))
+      when(mockApiService.sendMessageToComponent(
+              'test message', 'test-component'))
           .thenAnswer((_) async => mockResponse);
 
       // Test the method
-      final result = await chatRepository.sendMessage('test message', 'test-component');
-      
+      final result =
+          await chatRepository.sendMessage('test message', 'test-component');
+
       // Verify the result
       expect(result, isA<ChatMessage>());
       expect(result.text, contains('Test response'));
@@ -45,7 +47,8 @@ void main() {
 
     test('sendMessage handles error', () async {
       // Setup mock to throw an error
-      when(mockApiService.sendMessageToComponent('test message', 'test-component'))
+      when(mockApiService.sendMessageToComponent(
+              'test message', 'test-component'))
           .thenThrow(Exception('Test error'));
 
       // Test that the error is properly propagated
@@ -75,7 +78,7 @@ void main() {
 
       // Test the method
       final result = await chatRepository.fetchMessages('test-component');
-      
+
       // Verify the result
       expect(result, isA<List<ChatMessage>>());
       expect(result.length, greaterThan(0));
@@ -111,7 +114,8 @@ void main() {
             'content': [
               {
                 'type': 'text',
-                'text': '{"name": "Test Chat", "last_message": "Hello", "last_message_time": "2024-03-20", "last_sender": "User", "last_is_from_me": 0}',
+                'text':
+                    '{"name": "Test Chat", "last_message": "Hello", "last_message_time": "2024-03-20", "last_sender": "User", "last_is_from_me": 0}',
               }
             ],
           }
@@ -124,7 +128,7 @@ void main() {
 
       // Test the method
       final result = await chatRepository.fetchMessages('test-component');
-      
+
       // Verify the result
       expect(result, isA<List<ChatMessage>>());
       expect(result.length, greaterThan(1));
@@ -134,4 +138,4 @@ void main() {
       expect(result[1].text, contains('User'));
     });
   });
-} 
+}

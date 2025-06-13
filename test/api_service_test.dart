@@ -1,7 +1,7 @@
-import 'package:flutter_test/flutter_test.dart';
 import 'package:dio/dio.dart';
-import 'package:mcp_tool_app/services/api_service.dart';
+import 'package:flutter_test/flutter_test.dart';
 import 'package:mcp_tool_app/models/message_request.dart';
+import 'package:mcp_tool_app/services/api_service.dart';
 import 'package:mocktail/mocktail.dart';
 
 void main() {
@@ -99,7 +99,8 @@ void main() {
       apiService.dio = mockDio;
 
       // Test the sendMessageToComponent method
-      final response = await apiService.sendMessageToComponent(message, componentName);
+      final response =
+          await apiService.sendMessageToComponent(message, componentName);
       expect(response, equals(mockResponse));
     });
 
@@ -221,4 +222,4 @@ void main() {
 }
 
 // Mock class for Dio
-class MockDio extends Mock implements Dio {} 
+class MockDio extends Mock implements Dio {}

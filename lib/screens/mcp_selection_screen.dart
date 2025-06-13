@@ -96,7 +96,7 @@ class _McpSelectionScreenState extends State<McpSelectionScreen> {
               Container(
                 padding: const EdgeInsets.all(24.0),
                 decoration: BoxDecoration(
-                  color: Colors.white.withOpacity(0.1),
+                  color: Colors.white.withAlpha(26),
                   borderRadius: const BorderRadius.vertical(
                     top: Radius.circular(32),
                   ),
@@ -159,14 +159,13 @@ class _McpSelectionScreenState extends State<McpSelectionScreen> {
   }
 
   Widget _buildSelectionContainer(
-    BuildContext context,
-    String title,
-    Color color,
-    String component,
-    String description,
-    IconData icon,
-    Color iconColor
-  ) {
+      BuildContext context,
+      String title,
+      Color color,
+      String component,
+      String description,
+      IconData icon,
+      Color iconColor) {
     final isSelected = selectedModel == title;
 
     return GestureDetector(
@@ -180,17 +179,17 @@ class _McpSelectionScreenState extends State<McpSelectionScreen> {
         duration: const Duration(milliseconds: 200),
         padding: const EdgeInsets.all(20),
         decoration: BoxDecoration(
-          color: Colors.white.withOpacity(0.1),
+          color: Colors.white.withAlpha(26),
           borderRadius: BorderRadius.circular(20),
           border: Border.all(
-            color: isSelected ? iconColor : Colors.white.withOpacity(0.2),
+            color: isSelected ? iconColor : Colors.white.withAlpha(51),
             width: 2,
           ),
           boxShadow: [
             BoxShadow(
               color: isSelected
-                  ? iconColor.withOpacity(0.3)
-                  : Colors.black.withOpacity(0.1),
+                  ? iconColor.withAlpha(77)
+                  : Colors.black.withAlpha(26),
               spreadRadius: isSelected ? 2 : 0,
               blurRadius: isSelected ? 8 : 4,
               offset: const Offset(0, 4),
@@ -202,11 +201,11 @@ class _McpSelectionScreenState extends State<McpSelectionScreen> {
             Container(
               padding: const EdgeInsets.all(12),
               decoration: BoxDecoration(
-                color: Colors.white.withOpacity(0.2),
+                color: Colors.white.withAlpha(51),
                 borderRadius: BorderRadius.circular(16),
                 boxShadow: [
                   BoxShadow(
-                    color: iconColor.withOpacity(0.2),
+                    color: iconColor.withAlpha(51),
                     spreadRadius: 1,
                     blurRadius: 4,
                     offset: const Offset(0, 2),
@@ -237,7 +236,7 @@ class _McpSelectionScreenState extends State<McpSelectionScreen> {
                     description,
                     style: TextStyle(
                       fontSize: 14,
-                      color: Colors.white.withOpacity(0.7),
+                      color: Colors.white.withAlpha(179),
                     ),
                   ),
                 ],

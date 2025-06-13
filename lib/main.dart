@@ -7,8 +7,6 @@ void main() async {
   // To load the .env file contents into dotenv.
   await dotenv.load(fileName: ".env");
 
-
-
   runApp(const MyApp());
 }
 

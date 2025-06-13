@@ -146,10 +146,10 @@ class _ContentGeneratorViewState extends State<_ContentGeneratorView> {
                 child: Container(
                   margin: const EdgeInsets.symmetric(horizontal: 24.0),
                   decoration: BoxDecoration(
-                    color: Colors.white.withOpacity(0.1),
+                    color: Colors.white.withAlpha(26),
                     borderRadius: BorderRadius.circular(20),
                     border: Border.all(
-                      color: Colors.white.withOpacity(0.2),
+                      color: Colors.white.withAlpha(51),
                       width: 2,
                     ),
                   ),
@@ -175,7 +175,7 @@ class _ContentGeneratorViewState extends State<_ContentGeneratorView> {
                               padding: const EdgeInsets.symmetric(
                                   horizontal: 16, vertical: 8),
                               decoration: BoxDecoration(
-                                color: Colors.black.withOpacity(0.5),
+                                color: Colors.black.withAlpha(128),
                                 borderRadius: BorderRadius.circular(20),
                               ),
                               child: const Row(
@@ -210,9 +210,9 @@ class _ContentGeneratorViewState extends State<_ContentGeneratorView> {
                       horizontal: 24.0, vertical: 8.0),
                   padding: const EdgeInsets.all(16.0),
                   decoration: BoxDecoration(
-                    color: Colors.red.withOpacity(0.2),
+                    color: Colors.red.withAlpha(51),
                     borderRadius: BorderRadius.circular(12),
-                    border: Border.all(color: Colors.red.withOpacity(0.3)),
+                    border: Border.all(color: Colors.red.withAlpha(77)),
                   ),
                   child: Text(
                     widget.state.error!,
@@ -223,7 +223,7 @@ class _ContentGeneratorViewState extends State<_ContentGeneratorView> {
                 margin: const EdgeInsets.only(top: 24),
                 padding: const EdgeInsets.all(24.0),
                 decoration: BoxDecoration(
-                  color: Colors.white.withOpacity(0.1),
+                  color: Colors.white.withAlpha(26),
                   borderRadius: const BorderRadius.vertical(
                     top: Radius.circular(32),
                   ),
@@ -250,20 +250,20 @@ class _ContentGeneratorViewState extends State<_ContentGeneratorView> {
                   const EdgeInsets.symmetric(horizontal: 20.0, vertical: 12.0),
               decoration: BoxDecoration(
                 color: message.isUser
-                    ? Colors.blue.withOpacity(0.8)
-                    : Colors.white.withOpacity(0.2),
+                    ? Colors.blue.withAlpha(204)
+                    : Colors.white.withAlpha(51),
                 borderRadius: BorderRadius.circular(20.0),
                 border: Border.all(
                   color: message.isUser
-                      ? Colors.blue.withOpacity(0.3)
-                      : Colors.white.withOpacity(0.2),
+                      ? Colors.blue.withAlpha(77)
+                      : Colors.white.withAlpha(51),
                   width: 1,
                 ),
                 boxShadow: [
                   BoxShadow(
                     color: message.isUser
-                        ? Colors.blue.withOpacity(0.2)
-                        : Colors.black.withOpacity(0.1),
+                        ? Colors.blue.withAlpha(26)
+                        : Colors.black.withAlpha(26),
                     spreadRadius: 1,
                     blurRadius: 4,
                     offset: const Offset(0, 2),
@@ -275,7 +275,7 @@ class _ContentGeneratorViewState extends State<_ContentGeneratorView> {
                 style: TextStyle(
                   color: message.isUser
                       ? Colors.white
-                      : Colors.white.withOpacity(0.9),
+                      : Colors.white.withAlpha(230),
                   fontSize: 16,
                 ),
               ),
@@ -289,10 +289,10 @@ class _ContentGeneratorViewState extends State<_ContentGeneratorView> {
   Widget _buildTextComposer(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.white.withOpacity(0.1),
+        color: Colors.white.withAlpha(26),
         borderRadius: BorderRadius.circular(16),
         border: Border.all(
-          color: Colors.white.withOpacity(0.2),
+          color: Colors.white.withAlpha(51),
           width: 1,
         ),
       ),
@@ -304,7 +304,7 @@ class _ContentGeneratorViewState extends State<_ContentGeneratorView> {
               style: const TextStyle(color: Colors.white),
               decoration: InputDecoration(
                 hintText: 'Type a message...',
-                hintStyle: TextStyle(color: Colors.white.withOpacity(0.5)),
+                hintStyle: TextStyle(color: Colors.white.withAlpha(128)),
                 border: InputBorder.none,
                 contentPadding:
                     const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
@@ -330,7 +330,7 @@ class _ContentGeneratorViewState extends State<_ContentGeneratorView> {
             icon: Icon(
               Icons.send,
               color: widget.state.isLoading
-                  ? Colors.white.withOpacity(0.5)
+                  ? Colors.white.withAlpha(128)
                   : Colors.white,
             ),
             onPressed: widget.state.isLoading

@@ -34,7 +34,8 @@ class Message {
     required this.content,
   });
 
-  factory Message.fromJson(Map<String, dynamic> json) => _$MessageFromJson(json);
+  factory Message.fromJson(Map<String, dynamic> json) =>
+      _$MessageFromJson(json);
 
   Map<String, dynamic> toJson() => _$MessageToJson(this);
 }
@@ -55,4 +56,4 @@ class McpServer {
       _$McpServerFromJson(json);
 
   Map<String, dynamic> toJson() => _$McpServerToJson(this);
-} 
+}

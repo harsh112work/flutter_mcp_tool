@@ -1,9 +1,9 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mockito/mockito.dart';
 import 'package:mcp_tool_app/blocs/chat/chat_cubit.dart';
 import 'package:mcp_tool_app/blocs/chat/chat_state.dart';
-import 'package:mcp_tool_app/repositories/chat_repository.dart';
 import 'package:mcp_tool_app/models/chat_message.dart';
+import 'package:mcp_tool_app/repositories/chat_repository.dart';
+import 'package:mockito/mockito.dart';
 
 class MockChatRepository extends Mock implements ChatRepository {}
 
@@ -24,7 +24,7 @@ void main() {
 
     test('sendMessage success flow', () async {
       // Mock repository response
-      final mockResponse = ChatMessage(
+      const mockResponse = ChatMessage(
         text: 'Test response',
         isUser: false,
       );
@@ -67,7 +67,7 @@ void main() {
       when(mockRepository.sendMessage('test message', testComponentName))
           .thenAnswer((_) async {
         await Future.delayed(const Duration(milliseconds: 100));
-        return ChatMessage(text: 'Test response', isUser: false);
+        return const ChatMessage(text: 'Test response', isUser: false);
       });
 
       // Start sending message
@@ -89,7 +89,8 @@ void main() {
 
     test('sendMessage preserves existing messages', () async {
       // Add some existing messages
-      final existingMessage = ChatMessage(text: 'Existing message', isUser: true);
+      const existingMessage =
+          ChatMessage(text: 'Existing message', isUser: true);
       chatCubit.emit(ChatState(
         messages: [existingMessage],
         isLoading: false,
@@ -97,7 +98,7 @@ void main() {
       ));
 
       // Mock repository response
-      final mockResponse = ChatMessage(
+      const mockResponse = ChatMessage(
         text: 'Test response',
         isUser: false,
       );
@@ -115,4 +116,4 @@ void main() {
       expect(chatCubit.state.messages[2].text, equals('Test response'));
     });
   });
-} 
+}

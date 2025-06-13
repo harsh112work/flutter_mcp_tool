@@ -101,7 +101,8 @@ class Usage {
       cacheReadInputTokens: json['cache_read_input_tokens'] as int,
       outputTokens: json['output_tokens'] as int,
       serviceTier: json['service_tier'] as String,
-      serverToolUse: ServerToolUse.fromJson(json['server_tool_use'] as Map<String, dynamic>),
+      serverToolUse: ServerToolUse.fromJson(
+          json['server_tool_use'] as Map<String, dynamic>),
     );
   }
 }
@@ -118,4 +119,4 @@ class ServerToolUse {
       webSearchRequests: json['web_search_requests'] as int,
     );
   }
-} 
+}
