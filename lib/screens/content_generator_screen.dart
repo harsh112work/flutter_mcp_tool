@@ -65,8 +65,8 @@ class _ContentGeneratorViewState extends State<_ContentGeneratorView> {
 
   void _initSpeech() async {
     await _speech.initialize(
-      onStatus: (status) => print('Speech status: $status'),
-      onError: (error) => print('Speech error: $error'),
+      onStatus: (status) => debugPrint('Speech status: $status'),
+      onError: (error) => debugPrint('Speech error: $error'),
     );
   }
 

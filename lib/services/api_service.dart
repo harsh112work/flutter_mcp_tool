@@ -1,9 +1,10 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 
 import '../models/message_request.dart';
 
 class ApiService {
-  final Dio _dio;
+  late final Dio _dio;
   final String _baseUrl = 'https://api.anthropic.com/v1';
   final String _apiKey;
 
@@ -24,6 +25,10 @@ class ApiService {
     ));
   }
 
+  // Add setter for testing
+  @visibleForTesting
+  set dio(Dio value) => _dio = value;
+
   Future<Response> sendMessage(MessageRequest request) async {
     try {
       final response = await _dio.post(
@@ -32,14 +37,14 @@ class ApiService {
       );
       return response;
     } on DioException catch (e) {
-      print('DioException details:');
-      print('Type: ${e.type}');
-      print('Message: ${e.message}');
-      print('Response: ${e.response?.data}');
-      print('Status code: ${e.response?.statusCode}');
+      debugPrint('DioException details:');
+      debugPrint('Type: ${e.type}');
+      debugPrint('Message: ${e.message}');
+      debugPrint('Response: ${e.response?.data}');
+      debugPrint('Status code: ${e.response?.statusCode}');
       throw Exception('Failed to send message: ${e.message}\nResponse: ${e.response?.data}');
     } catch (e) {
-      print('Unexpected error: $e');
+      debugPrint('Unexpected error: $e');
       throw Exception('Failed to send message: $e');
     }
   }
@@ -65,23 +70,23 @@ class ApiService {
         },
       );
 
-      print("response ${response.data}");
+      debugPrint("response ${response.data}");
       return response.data;
     } on DioException catch (e) {
-      print('DioException details:');
-      print('Type: ${e.type}');
-      print('Message: ${e.message}');
-      print('Response: ${e.response?.data}');
-      print('Status code: ${e.response?.statusCode}');
+      debugPrint('DioException details:');
+      debugPrint('Type: ${e.type}');
+      debugPrint('Message: ${e.message}');
+      debugPrint('Response: ${e.response?.data}');
+      debugPrint('Status code: ${e.response?.statusCode}');
       throw Exception('Failed to send message: ${e.message}\nResponse: ${e.response?.data}');
     } catch (e) {
-      print('Unexpected error: $e');
+      debugPrint('Unexpected error: $e');
       throw Exception('Failed to send message: $e');
     }
   }
 
   Future<Map<String, dynamic>> fetchMessages(String componentName) async {
-    print('Fetching messages for component: $componentName');
+    debugPrint('Fetching messages for component: $componentName');
     try {
       final response = await _dio.post(
         '/messages',
@@ -91,7 +96,7 @@ class ApiService {
           "messages": [
             {
               "role": "user",
-              "content": "List my 5 most recent ${componentName} chats"
+              "content": "List my 5 most recent $componentName chats"
             }
           ],
           "mcp_servers": [
@@ -103,17 +108,17 @@ class ApiService {
           ]
         },
       );
-      print('Response received: ${response.data}');
+      debugPrint('Response received: ${response.data}');
       return response.data;
     } on DioException catch (e) {
-      print('DioException details:');
-      print('Type: ${e.type}');
-      print('Message: ${e.message}');
-      print('Response: ${e.response?.data}');
-      print('Status code: ${e.response?.statusCode}');
+      debugPrint('DioException details:');
+      debugPrint('Type: ${e.type}');
+      debugPrint('Message: ${e.message}');
+      debugPrint('Response: ${e.response?.data}');
+      debugPrint('Status code: ${e.response?.statusCode}');
       throw Exception('Failed to fetch messages: ${e.message}\nResponse: ${e.response?.data}');
     } catch (e) {
-      print('Unexpected error: $e');
+      debugPrint('Unexpected error: $e');
       throw Exception('Failed to fetch messages: $e');
     }
   }

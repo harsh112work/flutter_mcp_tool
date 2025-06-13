@@ -60,8 +60,7 @@ void main() {
           ));
 
       // Replace the real Dio instance with our mock
-      apiService = ApiService(testApiKey);
-      apiService._dio = mockDio;
+      apiService.dio = mockDio;
 
       // Test the sendMessage method
       final response = await apiService.sendMessage(request);
@@ -97,8 +96,7 @@ void main() {
           ));
 
       // Replace the real Dio instance with our mock
-      apiService = ApiService(testApiKey);
-      apiService._dio = mockDio;
+      apiService.dio = mockDio;
 
       // Test the sendMessageToComponent method
       final response = await apiService.sendMessageToComponent(message, componentName);
@@ -133,8 +131,7 @@ void main() {
           ));
 
       // Replace the real Dio instance with our mock
-      apiService = ApiService(testApiKey);
-      apiService._dio = mockDio;
+      apiService.dio = mockDio;
 
       // Test the fetchMessages method
       final response = await apiService.fetchMessages(componentName);
@@ -170,8 +167,7 @@ void main() {
       ));
 
       // Replace the real Dio instance with our mock
-      apiService = ApiService(testApiKey);
-      apiService._dio = mockDio;
+      apiService.dio = mockDio;
 
       // Test that the error is properly handled
       expect(
@@ -192,8 +188,7 @@ void main() {
       ));
 
       // Replace the real Dio instance with our mock
-      apiService = ApiService(testApiKey);
-      apiService._dio = mockDio;
+      apiService.dio = mockDio;
 
       // Test that the error is properly handled
       expect(
@@ -214,8 +209,7 @@ void main() {
       ));
 
       // Replace the real Dio instance with our mock
-      apiService = ApiService(testApiKey);
-      apiService._dio = mockDio;
+      apiService.dio = mockDio;
 
       // Test that the error is properly handled
       expect(
