@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mcp_tool_app/config/app_constants.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:speech_to_text/speech_to_text.dart' as stt;
 
 import '../blocs/chat/chat_cubit.dart';
@@ -22,7 +22,7 @@ class ContentGeneratorScreen extends StatelessWidget {
     return BlocProvider(
       create: (context) => ChatCubit(
         ChatRepository(
-          ApiService(AppConstants.kMCPApiKey),
+          ApiService(dotenv.env['ANTHOPIC_AUTH_KEY'] ?? ""),
         ),
         componentName: componentName,
       ),

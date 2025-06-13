@@ -15,6 +15,13 @@ class ApiService {
       'anthropic-version': '2023-06-01',
       'anthropic-beta': 'mcp-client-2025-04-04',
     };
+    
+    // Add logging interceptor for debugging
+    _dio.interceptors.add(LogInterceptor(
+      requestBody: true,
+      responseBody: true,
+      error: true,
+    ));
   }
 
   Future<Response> sendMessage(MessageRequest request) async {
@@ -24,7 +31,15 @@ class ApiService {
         data: request.toJson(),
       );
       return response;
+    } on DioException catch (e) {
+      print('DioException details:');
+      print('Type: ${e.type}');
+      print('Message: ${e.message}');
+      print('Response: ${e.response?.data}');
+      print('Status code: ${e.response?.statusCode}');
+      throw Exception('Failed to send message: ${e.message}\nResponse: ${e.response?.data}');
     } catch (e) {
+      print('Unexpected error: $e');
       throw Exception('Failed to send message: $e');
     }
   }
@@ -48,12 +63,19 @@ class ApiService {
             }
           ]
         },
-
       );
 
       print("response ${response.data}");
       return response.data;
+    } on DioException catch (e) {
+      print('DioException details:');
+      print('Type: ${e.type}');
+      print('Message: ${e.message}');
+      print('Response: ${e.response?.data}');
+      print('Status code: ${e.response?.statusCode}');
+      throw Exception('Failed to send message: ${e.message}\nResponse: ${e.response?.data}');
     } catch (e) {
+      print('Unexpected error: $e');
       throw Exception('Failed to send message: $e');
     }
   }
@@ -84,13 +106,12 @@ class ApiService {
       print('Response received: ${response.data}');
       return response.data;
     } on DioException catch (e) {
-      print('Error fetching messages: ${e.message}');
-      if (e.response != null) {
-        print('Response data: ${e.response?.data}');
-        print('Response status: ${e.response?.statusCode}');
-        print('Response headers: ${e.response?.headers}');
-      }
-      throw Exception('Failed to fetch messages: ${e.message}');
+      print('DioException details:');
+      print('Type: ${e.type}');
+      print('Message: ${e.message}');
+      print('Response: ${e.response?.data}');
+      print('Status code: ${e.response?.statusCode}');
+      throw Exception('Failed to fetch messages: ${e.message}\nResponse: ${e.response?.data}');
     } catch (e) {
       print('Unexpected error: $e');
       throw Exception('Failed to fetch messages: $e');
